@@ -1,12 +1,14 @@
+rootProject.name = "mockinizer-codegen"
+
 pluginManagement {
     repositories {
         google()
+        mavenCentral()
         gradlePluginPortal()
     }
 }
 
-includeBuild("includedBuild/dependencies")
-includeBuild("includedBuild/gradleConfiguration")
-
+includeBuild("included/dependencies")
+includeBuild("included/plugins")
 include (":annotation")
 include (":processor")

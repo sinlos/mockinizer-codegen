@@ -1,10 +1,11 @@
-package rcme.mockinizer.publish
+package rcme.mockinizer.configuration
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
+import org.gradle.jvm.tasks.Jar
 import java.net.URI
 
 class PublishConfigurationPlugin : Plugin<Project> {
@@ -12,6 +13,7 @@ class PublishConfigurationPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         target.plugins.apply(MavenPublishPlugin::class.java)
         setupPublishing(target)
+        createEmptySourcesJar(target)
     }
 
     private fun setupPublishing(project: Project) {
@@ -62,5 +64,18 @@ class PublishConfigurationPlugin : Plugin<Project> {
             }
         }
     }
+
+    private fun createEmptySourcesJar(project: Project) {
+        val task = project.tasks.register("javadocJar", Jar::class.java) {
+            archiveClassifier.set("javadoc")
+        }
+        project
+            .extensions
+            .getByType(PublishingExtension::class.java)
+            .publications
+            .withType(MavenPublication::class.java)
+            .configureEach { artifact(task.get()) }
+    }
+
 
 }

@@ -1,57 +1,75 @@
-//import config.Config
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetContainer
-import java.util.*
+//import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetContainer
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
 
 buildscript {
     repositories {
         google()
+        mavenCentral()
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.1.0-alpha05")
-        classpath(kotlin("gradle-plugin", version = "1.5.20"))
-        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.5.21-1.0.0-beta06")
-//        classpath("configuration")
+        classpath(kotlin("gradle-plugin", version = "1.5.30-M1"))
     }
 }
 
-//val githubProps = file(project.rootDir.absolutePath + "/gradle.properties").inputStream().use { Properties().apply { load(it) } }
-//val nextVersion = Config.nextVersion
+//dependencies {
+//    implementation("com.squareup:javapoet:1.13.0")
+//    implementation("com.google.devtools.ksp:symbol-processing-api:1.5.21-1.0.0-beta06")
+//    implementation(project(":annotation"))
+//}
+
+//apply(plugin = "rcme.mockinizer.dependencies.mockinizer-dependencies")
+//apply(plugin = "mockinizer-properties")
+//apply(plugin = "mockinizer-publish")
+//apply(plugin = "mockinizer-detekt")
 
 subprojects {
-    val moduleName = this.name
+    val module = this
+    val moduleName = module.name
 
-    apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "maven-publish")
+//    apply<rcme.mockinizer.dependencies>()
 
-    configure<KotlinSourceSetContainer> {
-        sourceSets.getByName("main").kotlin.srcDirs("src/main/kotlin")
-    }
+//        apply(plugin = "dependencies")
+//        apply(plugin = "the-properties")
+//        apply(plugin = "the-publish")
+//        apply(plugin = "the-detekt")
 
-    configure<PublishingExtension> {
-        publications {
-            create<MavenPublication>("annotation") {
-                groupId = "rcme.mockinizer"
-                artifactId = moduleName
+//    apply(plugin = "rcme.mockinizer.dependencies.mockinizer-dependencies")
+//    apply(plugin = "mockinizer-properties")
+//    apply(plugin = "mockinizer-publish")
+//    apply(plugin = "mockinizer-detekt")
+
+//    configure<KotlinSourceSetContainer> {
+//        sourceSets.getByName("main").kotlin.srcDirs("src/main/kotlin")
+//    }
+//
+//    configure<PublishingExtension> {
+//        publications {
+//            create<MavenPublication>("annotation") {
+//                groupId = "rcme.mockinizer"
+//                artifactId = moduleName
 //                version = "1.0.$nextVersion"
-
-                from(components["java"])
-            }
-        }
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/sinlos/repo")
+//
+//                from(components.getByName("kotlin"))
+//                artifact(tasks.getByName("kotlinSourcesJar"))
+//            }
+//        }
+//        repositories {
+//            maven {
+//                name = "GitHubPackages"
+//                url = uri("https://maven.pkg.github.com/sinlos/repo")
 //                credentials {
 //                    username = githubProps["gpr.user"] as String?
 //                    password = githubProps["gpr.key"] as String?
 //                }
-            }
-        }
-    }
-
-    repositories {
-        google()
-        mavenCentral()
-    }
+//            }
+//        }
+//    }
 }

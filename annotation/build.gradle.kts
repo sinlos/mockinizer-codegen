@@ -1,25 +1,14 @@
-import rcme.mockinizer.dependencies.Deps
-
 plugins {
-    id("org.jetbrains.kotlin.jvm")
-    id("publish-configuration")
-    id("detekt-configuration")
+    `kotlin-dsl`
+    `java-gradle-plugin`
 }
 
-//group = reaktive_group_id
-//version = reaktive_version
-//
-//publishing {
-//    publications {
-//        jvm(MavenPublication) {
-//            from components.java
-//            artifact kotlinSourcesJar
-//        }
-//    }
-//}
+group = "rcme.mockinizer.annotation"
+version = "SNAPSHOT"
 
-dependencies {
-//    implementation Deps.kotlin.stdlib.jdk7
-//dependencies {
-    implementation("com.jakewharton.timber:timber:4.7.1")
+repositories {
+    google()
+    gradlePluginPortal()
+    mavenCentral()
 }
+

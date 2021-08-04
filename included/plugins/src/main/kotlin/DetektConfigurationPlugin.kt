@@ -1,4 +1,4 @@
-package rcme.mockinizer.detekt
+package rcme.mockinizer.configuration
 
 import rcme.mockinizer.dependencies.Deps
 import io.gitlab.arturbosch.detekt.CONFIGURATION_DETEKT_PLUGINS

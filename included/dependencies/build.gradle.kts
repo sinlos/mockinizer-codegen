@@ -7,7 +7,8 @@ group = "rcme.mockinizer.dependencies"
 version = "SNAPSHOT"
 
 repositories {
-    jcenter()
+    google()
+    mavenCentral()
 }
 
 gradlePlugin {
