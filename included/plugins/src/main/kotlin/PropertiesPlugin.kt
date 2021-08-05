@@ -1,4 +1,4 @@
-package rcme.mockinizer.configuration
+package rcme.mockinizer.plugins
 
 import org.gradle.api.Action
 import org.gradle.api.Plugin

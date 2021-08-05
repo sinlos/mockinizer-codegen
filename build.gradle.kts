@@ -1,12 +1,12 @@
-//import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetContainer
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
+plugins {
+    `kotlin-dsl`
+    id("dependencies")
+    id("publishing")
+    id("detekt-config")
 }
+
+group = "rcme.mockinizer.annotation"
+version = "SNAPSHOT"
 
 buildscript {
     repositories {
@@ -15,15 +15,30 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath(kotlin("gradle-plugin", version = "1.5.30-M1"))
+        classpath(kotlin("gradle-plugin"))
     }
 }
 
-//dependencies {
-//    implementation("com.squareup:javapoet:1.13.0")
-//    implementation("com.google.devtools.ksp:symbol-processing-api:1.5.21-1.0.0-beta06")
-//    implementation(project(":annotation"))
-//}
+allprojects {
+    group = "rcme.mockinizer"
+    version = "SNAPSHOT"
+
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+//    plugins {
+//
+//    }
+
+//    withType(JavaPlugin) {
+//        dependencies {
+//            testCompile('junit:junit:4.12')
+//        }
+//    }
+}
 
 //apply(plugin = "rcme.mockinizer.dependencies.mockinizer-dependencies")
 //apply(plugin = "mockinizer-properties")
@@ -33,6 +48,16 @@ buildscript {
 subprojects {
     val module = this
     val moduleName = module.name
+
+//    dependencies {
+//        compile(project(":annotation"))
+//    }
+
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
 
 //    apply<rcme.mockinizer.dependencies>()
 

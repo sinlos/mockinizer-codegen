@@ -1,7 +1,7 @@
 plugins {
-    `kotlin-dsl`
-    `java-gradle-plugin`
+    kotlin("jvm")
     id("dependencies")
+    id("detekt-config")
 }
 
 group = "rcme.mockinizer.annotation"
@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("gradle-plugin", version = "1.5.20"))
     implementation(project(":annotation"))
+    implementation(kotlin("gradle-plugin"))
     implementation("com.google.devtools.ksp:symbol-processing-api:1.5.21-1.0.0-beta06")
 }

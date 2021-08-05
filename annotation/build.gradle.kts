@@ -1,14 +1,11 @@
 plugins {
-    `kotlin-dsl`
-    `java-gradle-plugin`
+    kotlin("jvm")
 }
 
 group = "rcme.mockinizer.annotation"
 version = "SNAPSHOT"
 
 repositories {
-    google()
-    gradlePluginPortal()
     mavenCentral()
 }
 

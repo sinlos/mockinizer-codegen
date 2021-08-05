@@ -1,6 +1,5 @@
-package rcme.mockinizer.configuration
+package rcme.mockinizer.plugins
 
-import rcme.mockinizer.dependencies.Deps
 import io.gitlab.arturbosch.detekt.CONFIGURATION_DETEKT_PLUGINS
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
@@ -18,6 +17,6 @@ class DetektConfigurationPlugin : Plugin<Project> {
             )
             config = target.rootProject.files("detekt.yml")
         }
-        target.dependencies.add(CONFIGURATION_DETEKT_PLUGINS, Deps.Detekt.ktlint)
+//        target.dependencies.add(CONFIGURATION_DETEKT_PLUGINS, Deps.Detekt.ktlint)
     }
 }

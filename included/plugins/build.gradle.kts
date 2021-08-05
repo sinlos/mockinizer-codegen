@@ -12,6 +12,12 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.18.0-RC2")
+    implementation(kotlin("gradle-plugin"))
+    implementation("com.google.devtools.ksp:symbol-processing-api:1.5.21-1.0.0-beta06")
+}
+
 gradlePlugin {
     plugins.register("properties") {
         id = "properties"
