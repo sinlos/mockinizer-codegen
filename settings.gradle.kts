@@ -7,8 +7,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-
-includeBuild("included/dependencies")
-includeBuild("included/plugins")
+includeBuild("included/dependencies") { name = "dependencies" }
+includeBuild("included/plugins") { name = "plugins" }
 include (":annotation")
 include (":processor")

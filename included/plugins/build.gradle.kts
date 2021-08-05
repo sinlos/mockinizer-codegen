@@ -1,7 +1,9 @@
+import rcme.mockinizer.dependencies.Deps
+
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
-    id("dependencies")
+    id("the-dependencies")
 }
 
 group = "rcme.mockinizer.plugins"
@@ -13,28 +15,20 @@ repositories {
 }
 
 dependencies {
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.18.0-RC2")
+    implementation("rcme.mockinizer.dependencies:dependencies:SNAPSHOT")
+    implementation(Deps.detekt.plugin)
     implementation(kotlin("gradle-plugin"))
     implementation("com.google.devtools.ksp:symbol-processing-api:1.5.21-1.0.0-beta06")
 }
 
 gradlePlugin {
-    plugins.register("properties") {
-        id = "properties"
-        implementationClass = "rcme.mockinizer.plugins.PropertiesPlugin"
-    }
-    plugins.register("publishing") {
-        id = "publishing"
+    plugins.register("publish-configuration") {
+        id = "publish-configuration"
         implementationClass = "rcme.mockinizer.plugins.PublishConfigurationPlugin"
     }
-    plugins.register("detekt-config") {
-        id = "detekt-config"
+    plugins.register("detekt-configuration") {
+        id = "detekt-configuration"
         implementationClass = "rcme.mockinizer.plugins.DetektConfigurationPlugin"
-    }
-    plugins.register("defaults") {
-        id = "defaults"
-        implementationClass = "rcme.mockinizer.plugins.DefaultsPlugin"
     }
 }
 
-// kotlin.sourceSets.getByName("main").kotlin.srcDir("../dependencies/src/main/kotlin")

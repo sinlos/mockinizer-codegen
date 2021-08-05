@@ -1,17 +1,6 @@
-plugins {
-    kotlin("jvm")
-    id("dependencies")
-    id("detekt-config")
-}
 
 group = "rcme.mockinizer.annotation"
 version = "SNAPSHOT"
-
-repositories {
-    google()
-    gradlePluginPortal()
-    mavenCentral()
-}
 
 dependencies {
     implementation(project(":annotation"))

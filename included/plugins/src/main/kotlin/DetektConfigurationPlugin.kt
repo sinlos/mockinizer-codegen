@@ -17,6 +17,6 @@ class DetektConfigurationPlugin : Plugin<Project> {
             )
             config = target.rootProject.files("detekt.yml")
         }
-//        target.dependencies.add(CONFIGURATION_DETEKT_PLUGINS, Deps.Detekt.ktlint)
+        target.dependencies.add(CONFIGURATION_DETEKT_PLUGINS, "io.gitlab.arturbosch.detekt:detekt-formatting:1.17.0")
     }
 }
