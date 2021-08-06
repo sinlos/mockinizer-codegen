@@ -15,10 +15,9 @@ repositories {
 }
 
 dependencies {
-    implementation("rcme.mockinizer.dependencies:dependencies:SNAPSHOT")
     implementation(Deps.detekt.plugin)
-    implementation(kotlin("gradle-plugin"))
-    implementation("com.google.devtools.ksp:symbol-processing-api:1.5.21-1.0.0-beta06")
+    implementation(Deps.kotlin.plugin)
+    implementation(Deps.kotlin.ksp.api)
 }
 
 gradlePlugin {

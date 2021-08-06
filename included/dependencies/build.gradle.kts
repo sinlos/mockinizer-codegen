@@ -13,7 +13,6 @@ repositories {
 
 dependencies {
     implementation(kotlin("gradle-plugin"))
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-properties:1.2.2")
 }
 
 gradlePlugin {

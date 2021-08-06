@@ -2,37 +2,26 @@
 
 package rcme.mockinizer.dependencies
 
-import kotlinx.serialization.properties.Properties
-import kotlinx.serialization.properties.decodeFromMap
-import org.gradle.api.Project
-
 object Deps {
 
-    lateinit var versions: Versions
-
-    fun init(project: Project) {
-        if (::versions.isInitialized) return
-//        val findProperty = project.findProperty("kotlinx_serialization_version")
-//        val vers = kotlin.runCatching { Properties.decodeFromMap<Versions>(project.properties as Map<String, Any>) }
-        val vers = Properties.decodeFromMap<Versions>(project.properties as Map<String, Any>)
-        versions = vers
-/*
-        println("====== ${vers.isSuccess}")
-        if (vers.isSuccess) {
-            versions = vers.getOrThrow()
-        }
-*/
+    object versions {
+        var kotlin_version = "1.5.30-M1"
+        var ksp_version = "1.5.21-1.0.0-beta06"
+        var detekt_version = "1.18.0-RC2"
     }
 
     val nextVersion by lazy { ((java.util.Date().time / 1000) - 1451606400) / 10 }
 
-    object Gradle {
+    object gradle {
 
     }
 
     object kotlin {
         val plugin by lazy { "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin_version}" }
         val stdlib by lazy { "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin_version}" }
+        object ksp {
+            val api by lazy { "com.google.devtools.ksp:symbol-processing-api:${versions.ksp_version}" }
+        }
     }
 
     object detekt {
