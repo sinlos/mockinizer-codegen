@@ -1,4 +1,4 @@
-group = "rcme.mockinizer.ksp"
+group = "rcme.mockinizer.workload"
 version = "SNAPSHOT"
 
 plugins {
@@ -12,10 +12,14 @@ repositories {
 }
 
 dependencies {
-//    implementation(Square.kotlinPoet)
-    implementation(projects.annotation)
+//    libs.ksp.api.get()
+//    implementation(libs.kotlin.gradle.pg)
+//    implementation(projects.annotation)
+//    implementation(projects.processor)
 //    implementation(libs.ksp.api)
 //    implementation(libs.ksp.autoservice)
+//    ksp(libs.ksp.autoservice)
+//    ksp(projects.processor)
 }
 
 sourceSets.main {

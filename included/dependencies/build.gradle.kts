@@ -1,6 +1,10 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
+    `kotlin-dsl`
     `java-gradle-plugin`
-    kotlin("jvm") version "1.5.30-M1"
+    `version-catalog`
+    `maven-publish`
 }
 
 group = "rcme.mockinizer.dependencies"
@@ -19,5 +23,20 @@ gradlePlugin {
     plugins.register("the-dependencies") {
         id = "the-dependencies"
         implementationClass = "rcme.mockinizer.dependencies.DependenciesPlugin"
+    }
+}
+
+catalog {
+    // declare the aliases, bundles and versions in this block
+    versionCatalog {
+        alias("my-lib").to("com.mycompany:mylib:1.2")
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["versionCatalog"])
+        }
     }
 }

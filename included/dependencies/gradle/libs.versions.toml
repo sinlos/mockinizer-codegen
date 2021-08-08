@@ -1,0 +1,14 @@
+[versions]
+
+kotlinpoet = "1.9.0"
+detekt = "1.18.0-RC2"
+
+[libraries]
+
+kotlin-gradle =        { group = "org.jetbrains.kotlin",    name = "kotlin-gradle-plugin",              version.ref = "kotlin" }
+
+ksp-api =              { group = "com.google.devtools.ksp", name = "symbol-processing-api",             version.ref = "ksp" }
+ksp-gradle =           { group = "com.google.devtools.ksp", name = "symbol-processing-gradle-plugin",   version.ref = "ksp" }
+ksp-autoservice =      { group = "com.google.auto.service", name = "auto-service-annotations",          version = "1.0" }
+
+kotlinpoet =           { group = "com.squareup",            name = "kotlinpoet",                        version.ref = "kotlinpoet" }

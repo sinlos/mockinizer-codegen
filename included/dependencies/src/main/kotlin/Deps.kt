@@ -5,7 +5,7 @@ package rcme.mockinizer.dependencies
 object Deps {
 
     object versions {
-        var kotlin_version = "1.5.30-M1"
+        var kotlin_version = "1.5.21"
         var ksp_version = "1.5.21-1.0.0-beta06"
         var detekt_version = "1.18.0-RC2"
     }
@@ -17,15 +17,18 @@ object Deps {
     }
 
     object kotlin {
-        val plugin by lazy { "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin_version}" }
-        val stdlib by lazy { "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin_version}" }
+        val version = versions.kotlin_version
+        val plugin by lazy { "org.jetbrains.kotlin:kotlin-gradle-plugin:$version" }
+        val stdlib by lazy { "org.jetbrains.kotlin:kotlin-stdlib:$version" }
         object ksp {
-            val api by lazy { "com.google.devtools.ksp:symbol-processing-api:${versions.ksp_version}" }
+            val version = versions.ksp_version
+            val api by lazy { "com.google.devtools.ksp:symbol-processing-api:$version" }
         }
     }
 
     object detekt {
-        val plugin by lazy { "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${versions.detekt_version}" }
-        val ktlint by lazy { "io.gitlab.arturbosch.detekt:detekt-formatting:${versions.detekt_version}" }
+        val version = versions.detekt_version
+        val plugin by lazy { "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$version" }
+        val ktlint by lazy { "io.gitlab.arturbosch.detekt:detekt-formatting:$version" }
     }
 }

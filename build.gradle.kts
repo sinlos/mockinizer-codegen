@@ -1,10 +1,13 @@
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetContainer
 import rcme.mockinizer.dependencies.Deps.nextVersion
 
+//val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs") as org.gradle.accessors.dm.LibrariesForLibs
+
 plugins {
     id("the-dependencies") apply false
     id("publish-configuration") apply false
     id("detekt-configuration") apply false
+    id("com.github.ben-manes.versions")
 }
 
 subprojects {
@@ -28,7 +31,7 @@ subprojects {
 
     configure<PublishingExtension> {
         publications {
-            create<MavenPublication>("annotation") {
+            create<MavenPublication>(moduleName) {
                 groupId = "rcme.mockinizer"
                 artifactId = moduleName
                 version = "1.0.$nextVersion"
