@@ -12,16 +12,7 @@ repositories {
 }
 
 dependencies {
-//    libs.ksp.api.get()
-//    implementation(libs.kotlin.gradle.pg)
-//    implementation(projects.annotation)
-//    implementation(projects.processor)
-//    implementation(libs.ksp.api)
-//    implementation(libs.ksp.autoservice)
-//    ksp(libs.ksp.autoservice)
-//    ksp(projects.processor)
-}
-
-sourceSets.main {
-    java.srcDirs("src/main/kotlin")
+    implementation(projects.annotation)
+    implementation(projects.processor)
+    ksp(projects.processor)
 }

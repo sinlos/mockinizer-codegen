@@ -1,13 +1,16 @@
+import io.gitlab.arturbosch.detekt.detekt
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetContainer
-import rcme.mockinizer.dependencies.Deps.nextVersion
 
 //val libs = project.extensions.getByType<VersionCatalogsExtension>().named("libs") as org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
-    id("the-dependencies") apply false
-    id("publish-configuration") apply false
-    id("detekt-configuration") apply false
+    kotlin("jvm") apply false
     id("com.github.ben-manes.versions")
+    id("io.gitlab.arturbosch.detekt")
+}
+
+detekt {
+    config = files("detekt.yml")
 }
 
 subprojects {
@@ -21,9 +24,7 @@ subprojects {
     }
 
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "the-dependencies")
-    apply(plugin = "publish-configuration")
-    apply(plugin = "detekt-configuration")
+    apply(plugin = "org.gradle.maven-publish")
 
     configure<KotlinSourceSetContainer> {
         sourceSets.getByName("main").kotlin.srcDirs("src/main/kotlin")
@@ -34,7 +35,7 @@ subprojects {
             create<MavenPublication>(moduleName) {
                 groupId = "rcme.mockinizer"
                 artifactId = moduleName
-                version = "1.0.$nextVersion"
+//                version = "1.0.$nextVersion"
 
                 from(components.getByName("kotlin"))
                 artifact(tasks.getByName("kotlinSourcesJar"))

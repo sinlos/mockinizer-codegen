@@ -1,6 +1,8 @@
 package rcme.mockinizer.workload
 
+import rcme.mockinizer.annotation.Mock
+
 class SomeFile {
-//    @Mock
+    @Mock
     val s: String = ""
 }
